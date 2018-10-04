@@ -17,5 +17,22 @@
     </algorithm>
     
     <!-- ALGORITHMS -->
-    <algorithm type = "MomentumThreshold"></algorithm>
+    <algorithm type = "MomentumThreshold">
+        <CaloHitListName>CaloHitList2D</CaloHitListName>
+        <MCParticleListName>Input</MCParticleListName>
+        <OutputTree>Particles</OutputTree>
+        <OutputFile>MomentumThreshold.root</OutputFile>
+    </algorithm>
+    
+    <algorithm type = "LArEventValidation">
+        <CaloHitListName>CaloHitList2D</CaloHitListName>
+        <MCParticleListName>Input</MCParticleListName>
+        <PfoListName>RecreatedPfos</PfoListName>
+        <UseTrueNeutrinosOnly>false</UseTrueNeutrinosOnly>
+        <PrintAllToScreen>false</PrintAllToScreen>
+        <PrintMatchingToScreen>true</PrintMatchingToScreen>
+        <WriteToTree>false</WriteToTree>
+        <OutputTree>Validation</OutputTree>
+        <OutputFile>Validation.root</OutputFile>
+    </algorithm>
 </pandora>
