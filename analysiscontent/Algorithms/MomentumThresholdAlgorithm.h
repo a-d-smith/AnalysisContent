@@ -14,8 +14,13 @@ namespace analysis_content
 
 class MomentumThresholdAlgorithm : public pandora::Algorithm
 {
+public:
     MomentumThresholdAlgorithm();
-}
+
+protected:
+    pandora::StatusCode ReadSettings(const pandora::TiXmlHandle xmlHandle);
+    pandora::StatusCode Run();
+};
 
 } // namespace analysis_content
 

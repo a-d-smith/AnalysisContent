@@ -67,8 +67,15 @@ endif()
 # - Collect sources - not ideal because you have to keep running CMake to pick up changes
 file(GLOB_RECURSE ANALYSIS_CONTENT_SRCS RELATIVE ${PROJECT_SOURCE_DIR} "analysiscontent/*.cc" "test/*.cc")
 
+# - Add library and properties
+add_library(${PROJECT_NAME} SHARED ${ANALYSIS_CONTENT_SRCS})
+set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${${PROJECT_NAME}_VERSION} SOVERSION ${${PROJECT_NAME}_SOVERSION})
+
 #-------------------------------------------------------------------------------------------------------------------------------------------
 # Install products
+
+# - library
+install(TARGETS ${PROJECT_NAME} DESTINATION lib COMPONENT Runtime)
 
 # - headers
 install(DIRECTORY ./analysiscontent DESTINATION include COMPONENT Development FILES_MATCHING PATTERN "*.h")
