@@ -3,7 +3,10 @@ Pandora algorithms for Andrew Smith's analysis
 
 ## Install guide
 
+Follow the instructions to [install Pandora](https://github.com/PandoraPFA/Documentation/blob/master/README.md).
+
 ```
+git clone https://github.com/a-d-smith/AnalysisContent.git
 cd AnalysisContent
 mkdir build
 cd build
