@@ -62,14 +62,14 @@ LAR_ALGORITHM_TOOL_LIST(LAR_CONTENT_CREATE_ALGORITHM_TOOL_FACTORY)
 
 #define LAR_CONTENT_REGISTER_ALGORITHM(a, b)                                                                                               \
     {                                                                                                                                      \
-        const pandora::StatusCode statusCode(PandoraApi::RegisterAlgorithmFactory(pandora, a, new analysis_content::b##FACTORY));       \
+        const pandora::StatusCode statusCode(PandoraApi::RegisterAlgorithmFactory(pandora, a, new analysis_content::b##FACTORY));          \
         if (pandora::STATUS_CODE_SUCCESS != statusCode)                                                                                    \
             return statusCode;                                                                                                             \
     }
 
 #define LAR_CONTENT_REGISTER_ALGORITHM_TOOL(a, b)                                                                                          \
     {                                                                                                                                      \
-        const pandora::StatusCode statusCode(PandoraApi::RegisterAlgorithmToolFactory(pandora, a, new analysis_content::b##FACTORY));   \
+        const pandora::StatusCode statusCode(PandoraApi::RegisterAlgorithmToolFactory(pandora, a, new analysis_content::b##FACTORY));      \
         if (pandora::STATUS_CODE_SUCCESS != statusCode)                                                                                    \
             return statusCode;                                                                                                             \
     }
