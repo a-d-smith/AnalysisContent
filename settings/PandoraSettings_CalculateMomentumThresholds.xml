@@ -24,7 +24,7 @@
         <OutputFile>MomentumThreshold.root</OutputFile>
     </algorithm>
     
-    <algorithm type = "LArEventValidation">
+    <!--algorithm type = "LArEventValidation">
         <CaloHitListName>CaloHitList2D</CaloHitListName>
         <MCParticleListName>Input</MCParticleListName>
         <PfoListName>RecreatedPfos</PfoListName>
@@ -34,5 +34,5 @@
         <WriteToTree>false</WriteToTree>
         <OutputTree>Validation</OutputTree>
         <OutputFile>Validation.root</OutputFile>
-    </algorithm>
+    </algorithm-->
 </pandora>

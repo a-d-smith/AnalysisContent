@@ -82,13 +82,26 @@ void MomentumThresholdAlgorithm::GetNeutrinoFinalStates(const MCParticleList *pM
 	if (!mcParticleToHitsMap.empty())
 		throw StatusCodeException(STATUS_CODE_INVALID_PARAMETER);
 
+    // Get the MCParticles which have associated hits, by using existing validation mechanics
 	LArMCParticleHelper::PrimaryParameters paramsAll;
 	paramsAll.m_minPrimaryGoodHits = 0;
 	paramsAll.m_minHitsForGoodView = 0;
 	paramsAll.m_minHitSharingFraction = 0.f;
-
 	LArMCParticleHelper::SelectReconstructableMCParticles(pMCParticleList, pCaloHitList, paramsAll, LArMCParticleHelper::IsBeamNeutrinoFinalState, mcParticleToHitsMap);
-	this->GetOrderedMCParticleVector(mcParticleToHitsMap, finalStateParticles);
+
+    // Also add in the MCParticles without hits
+    for (const MCParticle *const pMCParticle : *pMCParticleList)
+    {
+        if (!LArMCParticleHelper::IsBeamNeutrinoFinalState(pMCParticle))
+            continue;
+
+        if (mcParticleToHitsMap.find(pMCParticle) != mcParticleToHitsMap.end())
+            continue;
+
+        mcParticleToHitsMap.emplace(pMCParticle, CaloHitList());
+    }
+	
+    this->GetOrderedMCParticleVector(mcParticleToHitsMap, finalStateParticles);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------
